@@ -67,6 +67,21 @@ void Error_Handler(void);
 #define VCP_RX_GPIO_Port GPIOA
 #define LD3_Pin GPIO_PIN_3
 #define LD3_GPIO_Port GPIOB
+#define RE41_PDRST_Pin GPIO_PIN_4
+#define RE41_PDRST_GPIO_Port GPIOA
+#define RE41_CLKBF_Pin GPIO_PIN_5
+#define RE41_CLKBF_GPIO_Port GPIOA
+#define IGNORE_PIN1_Pin GPIO_PIN_6
+#define IGNORE_PIN1_GPIO_Port GPIOA
+#define RE41_SIGOUT0_Pin GPIO_PIN_7
+#define RE41_SIGOUT0_GPIO_Port GPIOA
+#define RE41_IRQ_Pin GPIO_PIN_8
+#define RE41_IRQ_GPIO_Port GPIOA
+#define RE41_IRQ_EXTI_IRQn EXTI9_5_IRQn
+#define RE41_NCS_Pin GPIO_PIN_11
+#define RE41_NCS_GPIO_Port GPIOA
+#define RE41_SIGOUT1_Pin GPIO_PIN_12
+#define RE41_SIGOUT1_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 

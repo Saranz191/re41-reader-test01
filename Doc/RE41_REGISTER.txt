@@ -1,0 +1,87 @@
+================================================================================
+RE41 REGISTER SUMMARY TABLE
+Reference: Silicon Craft Technology DTS-RE41 Datasheet
+================================================================================
+
+PAGE 0: Command & Status [1, 2]
+Addr | Register Name     | Type | Function and Description
+-----|-------------------|------|-----------------------------------------------
+0x01 | Command           | Dy   | สำหรับส่งคำสั่ง (Transceive, CRC, TuneFilter)
+0x02 | FIFOData          | Dy   | ช่องทาง Input/Output ของ FIFO ขนาด 64 ไบต์
+0x03 | Primary Status    | R    | แสดงสถานะ Modem, IRQ, และการเตือน FIFO (Hi/Lo)
+0x04 | FIFOLength        | R    | แสดงจำนวนไบต์ของข้อมูลที่อยู่ใน FIFO
+0x05 | Secondary Status  | R    | แสดงสถานะ Timer, CRC, EEPROM, และจำนวนบิตสุดท้าย
+0x06 | Interrupt Enable  | R/W  | เปิด/ปิด การใช้งาน Interrupt ต่างๆ
+0x07 | Interrupt Flag    | Dy   | แสดงสถานะ Flag ที่ทำให้เกิด Interrupt
+
+PAGE 1: Control & Status [2, 3]
+Addr | Register Name     | Type | Function and Description
+-----|-------------------|------|-----------------------------------------------
+0x09 | Control           | Dy   | ควบคุม StandBy, PowerDown, Crypto, และล้าง FIFO
+0x0A | ErrorFlag         | R    | รายงานข้อผิดพลาด (CRC, Framing, Collision, FIFO)
+0x0B | CollPos           | R    | ระบุตำแหน่งบิตที่เกิดการชนกันของสัญญาณ
+0x0C | TimerValue        | R    | แสดงค่าปัจจุบันที่นับอยู่ใน Timer
+0x0D | CRCResultLSB      | R    | ผลลัพธ์การคำนวณ CRC ส่วน LSB
+0x0E | CRCResultMSB      | R    | ผลลัพธ์การคำนวณ CRC ส่วน MSB
+0x0F | BitFraming        | Dy   | ปรับ RxAlign และกำหนดบิตสุดท้ายตอนส่ง (TxLastBits)
+
+PAGE 2: Tx & Coder [3-5]
+Addr | Register Name     | Type | Function and Description
+-----|-------------------|------|-----------------------------------------------
+0x11 | TxControl         | R/W  | ควบคุมกำลังส่ง RF และการมอดูเลต 100%ASK
+0x12 | TxCfgCW           | R/W  | ปรับ conductance ช่วงไม่มอดูเลต (GsCfgCW)
+0x13 | TxCfgMod          | R/W  | ปรับ conductance ช่วงมอดูเลต (GsCfgMod)
+0x14 | CoderControl      | R/W  | กำหนดอัตราความเร็ว (Rate) และรหัส (Coding) ตอนส่ง
+0x15 | ModWidth          | R/W  | กำหนดความกว้างพัลส์มอดูเลต (Data bits)
+0x16 | ModWidthSOF       | R/W  | กำหนดความกว้างพัลส์มอดูเลต (SOF bit)
+0x17 | TypeBTxFraming    | R/W  | กำหนดโครงสร้างเฟรม (SOF, EOF, EGT) สำหรับ Type B
+
+PAGE 3: Rx & Decoder [4, 6, 7]
+Addr | Register Name     | Type | Function and Description
+-----|-------------------|------|-----------------------------------------------
+0x19 | RxControl1        | R/W  | ตั้งค่า Subcarrier Pulses, Clocks และ Gain ภาครับ
+0x1A | DecoderControl    | R/W  | เลือก Framing และ Coding ในการรับ (A/B/FeliCa)
+0x1B | BitPhase          | R/W  | ปรับแต่งจังหวะ Phase ของสัญญาณภาครับ
+0x1C | RxThreshold       | R/W  | กำหนดระดับ MinLevel และ Collision Level
+0x1D | BPSKDemControl    | R/W  | ควบคุม BPSK Demodulator และระบบ AGC
+0x1E | RxControl2        | R/W  | ตั้งค่า Receiver Power Down และ Envelope Bypass
+0x1F | RxControl3        | R/W  | ควบคุม EMD Suppression และเงื่อนไขการหา SOF
+
+PAGE 4: RF-Timing [6, 8]
+Addr | Register Name     | Type | Function and Description
+-----|-------------------|------|-----------------------------------------------
+0x21 | RxWait            | R/W  | กำหนดระยะเวลารอคอย (Guard time) ก่อนเริ่มรับข้อมูล
+0x22 | ChannelRedundancy | R/W  | ตั้งค่าการใช้งาน CRC และ Parity บิต
+0x23 | CRCPresetMSB      | R/W  | ค่าเริ่มต้นส่วน MSB สำหรับคำนวณ CRC
+0x24 | CRCPresetLSB      | R/W  | ค่าเริ่มต้นส่วน LSB สำหรับคำนวณ CRC
+
+PAGE 5: Timer & Adjustment [9, 10]
+Addr | Register Name     | Type | Function and Description
+-----|-------------------|------|-----------------------------------------------
+0x29 | FIFOLevel         | R/W  | กำหนด Water Level สำหรับเตือนข้อมูลใน FIFO
+0x2A | TimerClock        | R/W  | ตั้งค่า Prescaler ของ Timer
+0x2B | TimerControl      | R/W  | กำหนดเงื่อนไข Start/Stop ของ Timer (Tx/Rx)
+0x2C | TimerReloadValue  | R/W  | ค่าที่จะถูกโหลดเข้า Timer ทุกครั้งที่เริ่มนับใหม่
+0x2E | ManualFilter      | R/W  | ปรับค่า Cut-off frequency ของตัวกรองสัญญาณด้วยมือ
+0x2F | FilterAdjust      | R/W  | ควบคุมระบบ Auto-tune ของตัวกรองสัญญาณ
+
+PAGE 6: IO & Indicator [9, 11]
+Addr | Register Name     | Type | Function and Description
+-----|-------------------|------|-----------------------------------------------
+0x31 | IOConfig          | R/W  | ตั้งค่าความถี่ขา CLKBF และขั้วสัญญาณขา IRQ
+0x37 | Signal Indicator  | R    | แสดงความแรงสัญญาณ (SSI) และผลการจูน Filter
+
+PAGE 7: Test & Special [11]
+Addr | Register Name     | Type | Function and Description
+-----|-------------------|------|-----------------------------------------------
+0x3A | Test              | R/W  | ใช้ส่งสัญญาณภายในออกมาที่ขาทดสอบ (TA/TD)
+0x3B | TxDisable         | R/W  | สั่งปิดการทำงานของภาคส่ง (Transmitter)
+0x3F | Gain_ST3          | R/W  | ปรับ Gain เพิ่มเติมในส่วนขยายสัญญาณขั้นตอนที่ 3
+
+--------------------------------------------------------------------------------
+Legend:
+R   = Read Only register [1]
+W   = Write Only register [12]
+R/W = Read and Write register [1]
+Dy  = Dynamic register (automatically updated by internal state machine) [12]
+================================================================================
