@@ -1,0 +1,27 @@
+# Build outputs
+Debug/
+Release/
+build/
+out/
+
+# Object and binary artifacts
+*.o
+*.obj
+*.a
+*.elf
+*.bin
+*.hex
+*.map
+*.list
+*.lst
+*.d
+*.su
+
+# IDE and OS noise
+.metadata/
+.vscode/
+.idea/
+*.launch
+*.log
+Thumbs.db
+Desktop.ini
