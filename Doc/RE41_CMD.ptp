@@ -1,0 +1,58 @@
+VERSION
+8
+
+COMMSETTINGS
+0
+COM5
+COM2
+115200
+2
+63
+4
+0
+0
+
+COMMDISPLAY
+0
+
+VERSATAP
+0
+
+CHANNELALIAS
+
+
+
+SEND
+0
+1. Write Single Register
+AA 00 06 00 01 00 02 29 15 39
+0
+5
+
+SEND
+1
+2.Read Single Register
+AA 00 05 00 01 00 01 29 2C
+0
+5
+
+SEND
+2
+3.Read Register List
+AA 00 06 00 01 00 03 29 2C 01
+0
+5
+
+SEND
+3
+4. Write List / Multiple Bytes
+AA 00 09 00 01 00 04 02 11 22 33 44 4A
+0
+5
+
+SEND
+4
+5.Read Register List
+AA 00 08 00 01 00 03 02 02 02 02 0A
+0
+5
